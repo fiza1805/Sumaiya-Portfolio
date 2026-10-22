@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>M Sumaiya – Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#090a16; --surface:#12142b; --surface2:#191c3a; --line:#262a52;
+  --text:#eceaff; --muted:#9b9dc4; --violet:#8b6bff; --amber:#ffb84d; --mint:#5ef2c0;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.05rem/1.6 var(--body);overflow-x:hidden}
+/* visible 12-column grid backdrop */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(90deg,transparent 0 calc(100%/12 - 1px),rgba(139,107,255,.07) calc(100%/12 - 1px) calc(100%/12));
+  mask-image:linear-gradient(#000 0,transparent 85%)}
+.glow{opacity:0;position:fixed;width:560px;height:560px;border-radius:50%;left:0;top:0;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(139,107,255,.22),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.03em;line-height:1}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;backdrop-filter:blur(14px);background:rgba(9,10,22,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav b{font:800 1.15rem var(--display)}
+nav div{display:flex;gap:22px;font-size:.95rem;color:var(--muted)}
+nav a{text-decoration:none;transition:color .2s}nav a:hover{color:var(--text)}
+nav a.mail{padding:7px 18px;border-radius:999px;background:var(--violet);color:#0b0a1c;font-weight:500;transition:background .2s,transform .2s}
+nav a.mail:hover{background:var(--amber);color:#0b0a1c;transform:translateY(-2px)}
+@media(max-width:640px){nav div{gap:14px;font-size:.85rem}nav div a:not(.mail){display:none}}
+/* hero */
+.hero{padding-top:clamp(56px,10vw,120px);padding-bottom:40px;min-height:78vh;display:flex;flex-direction:column;justify-content:center}
+.hero p.hi{color:var(--muted);margin:0 0 18px;font-size:1.15rem}
+.hero h1{font-size:clamp(3.4rem,13vw,10.5rem);font-weight:800;line-height:.9}
+.hero h1 span{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.16em;margin-bottom:-.16em}
+.hero h1 span i{display:inline-block;font-style:normal;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.12s;color:var(--violet)}
+@keyframes rise{to{transform:none}}
+.role{margin:26px 0 0;font:500 clamp(1.2rem,3vw,1.7rem) var(--display);min-height:2em}
+.role em{font-style:normal;color:var(--amber)}
+.caret{display:inline-block;width:3px;height:1.1em;background:var(--amber);margin-left:4px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lede{max-width:56ch;color:var(--muted);margin:14px 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:500;text-decoration:none;border:1px solid var(--line);transition:transform .2s,background .2s,border-color .2s}
+.btn.p{background:var(--violet);border-color:var(--violet);color:#0b0a1c}
+.btn:hover{transform:translateY(-3px);border-color:var(--violet)}
+.btn.p:hover{background:var(--amber);border-color:var(--amber)}
+.pulse{position:relative;margin-top:40px;height:120px}
+.pulse svg{width:100%;height:100%;overflow:visible}
+.pulse path{fill:none;stroke:var(--mint);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 3.2s .5s ease-out forwards,hum 4s 3.7s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(94,242,192,.6))}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes hum{50%{filter:drop-shadow(0 0 16px rgba(94,242,192,.95))}}
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;position:relative;z-index:1;background:rgba(18,20,43,.6)}
+.marq div{display:flex;gap:44px;width:max-content;padding:16px 0;animation:slide 32s linear infinite;font:500 1.25rem var(--display);color:var(--muted)}
+.marq:hover div{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* sections */
+section{padding:clamp(64px,9vw,112px) 0 0;position:relative;z-index:1}
+.sh{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;margin-bottom:34px;max-width:16ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,3vw,32px);position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;
+  background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(139,107,255,.2),transparent 60%)}
+.card:hover{border-color:var(--violet)}
+.card:hover::after{opacity:1}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}.c3{grid-column:span 3}
+@media(max-width:900px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}.c3{grid-column:span 6}}
+.card h3{font-size:1.7rem;margin-bottom:10px}
+.card p{color:var(--muted);margin:0 0 12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.tags li{padding:5px 13px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);font-size:.88rem}
+.feat{background:linear-gradient(145deg,#1b1744,#12142b 55%)}
+.badge{display:inline-block;background:var(--amber);color:#1b1200;font-weight:500;font-size:.85rem;padding:4px 14px;border-radius:999px;margin-bottom:18px}
+.feat ul{margin:14px 0 22px;padding-left:20px;color:var(--muted)}
+.feat li{margin-bottom:9px}.feat li::marker{color:var(--violet)}
+.feat ul.tags{padding-left:0;margin:16px 0 0}.feat .tags li{margin:0}
+.stat{display:flex;flex-direction:column;justify-content:flex-end}
+.stat b{font:800 clamp(2.6rem,6vw,4.4rem)/1 var(--display);color:var(--mint);letter-spacing:-.04em}
+.stat span{color:var(--muted);margin-top:6px}
+.bars{display:flex;align-items:flex-end;gap:7px;height:110px;margin:0 0 10px}
+.bars i{flex:1;background:linear-gradient(var(--violet),#5638c9);border-radius:6px 6px 0 0;height:0;transition:height 1.2s cubic-bezier(.2,.8,.2,1)}
+.in .bars i{height:var(--h)}
+.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px}
+.links a{color:var(--amber);text-decoration:none;font-weight:500;border-bottom:1px solid transparent;transition:border-color .2s}
+.links a:hover{border-color:var(--amber)}
+/* skills */
+.skill h3{font-size:1.3rem;color:var(--text)}
+/* contact */
+.contact{text-align:left;padding-bottom:clamp(64px,9vw,110px)}
+.big{font:800 clamp(1.35rem,6.4vw,5.6rem)/1 var(--display);letter-spacing:-.04em;text-decoration:none;display:inline-block;word-break:break-word;background:linear-gradient(90deg,var(--text),var(--violet),var(--amber),var(--text));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 8s linear infinite}
+@keyframes flow{to{background-position:300% 0}}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:.9rem}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);z-index:9;background:var(--surface2);border:1px solid var(--violet);color:var(--text);padding:12px 22px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:calc(100vw - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}.hero h1 span i{transform:none}.pulse path{stroke-dashoffset:0}.glow{display:none}
+}
+</style>
+</head>
+<body>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<nav><div class="wrap"><b>M Sumaiya</b><div><a href="#work">Work</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a><a class="mail" href="mailto:fiza70321@gmail.com?subject=Hello%20Sumaiya&body=Hi%20Sumaiya%2C%0A%0A">Mail me</a></div></div></nav>
+
+<header class="wrap hero">
+  <p class="hi">Hi, I’m</p>
+  <h1 aria-label="M Sumaiya"><span><i>M&nbsp;</i></span><span><i>Sumaiya</i></span></h1>
+  <p class="role">I turn raw data into <em id="typed"></em><span class="caret"></span></p>
+  <p class="lede">B.Tech student in AI and Data Science (2027). I build SQL and Python pipelines, then ship dashboards people can explore.</p>
+  <div class="cta"><a class="btn p" href="#work">See my work</a><a class="btn" href="https://paypulse-analytics.streamlit.app" target="_blank" rel="noopener">Open live dashboard</a><a class="btn" href="mailto:fiza70321@gmail.com?subject=Hello%20Sumaiya&body=Hi%20Sumaiya%2C%0A%0A">Mail me</a></div>
+  <div class="pulse" aria-hidden="true"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 70 L180 70 L210 70 L240 20 L275 105 L305 70 L520 70 L550 70 L580 35 L610 95 L640 70 L860 70 L890 10 L930 112 L960 70 L1200 70"/></svg></div>
+</header>
+
+<div class="marq" aria-hidden="true"><div>
+  <span>Python</span><span>SQL</span><span>MySQL</span><span>Pandas</span><span>NumPy</span><span>Plotly</span><span>Streamlit</span><span>Seaborn</span><span>Scikit-learn</span><span>Git</span>
+  <span>Python</span><span>SQL</span><span>MySQL</span><span>Pandas</span><span>NumPy</span><span>Plotly</span><span>Streamlit</span><span>Seaborn</span><span>Scikit-learn</span><span>Git</span>
+</div></div>
+
+<main class="wrap">
+<section id="work">
+  <h2 class="sh rv">Projects I’ve built</h2>
+  <div class="grid">
+    <article class="card feat c8 rv">
+      <span class="badge">Featured project</span>
+      <h3>PayPulse: India’s digital payments, explored</h3>
+      <p>An end-to-end analytics project on the public PhonePe Pulse dataset, from raw JSON to a deployed dashboard.</p>
+      <ul>
+        <li>Extracted state-level transaction data with Python and Pandas, then loaded and validated it in MySQL.</li>
+        <li>Wrote SQL analyses of volume, value, quarter-over-quarter growth and state rankings.</li>
+        <li>Deployed a Streamlit and Plotly dashboard with year and State/UT filters, KPI cards and auto-generated insights.</li>
+      </ul>
+      <div class="links"><a href="https://paypulse-analytics.streamlit.app" target="_blank" rel="noopener">Live dashboard</a><a href="https://github.com/fiza1805/PayPulse-Digital-Payment-Analytics" target="_blank" rel="noopener">Source on GitHub</a></div>
+      <ul class="tags"><li>Python</li><li>SQL (MySQL)</li><li>Pandas</li><li>Plotly</li><li>Streamlit</li></ul>
+    </article>
+    <div class="grid c4" style="grid-template-columns:1fr;gap:16px;align-content:stretch">
+      <div class="card stat rv" style="--d:.1s"><b data-to="1224">0</b><span>state-quarter records analysed</span></div>
+      <div class="card stat rv" style="--d:.2s"><b data-to="36">0</b><span>states and union territories covered</span></div>
+    </div>
+    <div class="card c12 rv" id="chartcard">
+      <h3>What the data showed</h3>
+      <div class="bars" aria-hidden="true"><i style="--h:30%"></i><i style="--h:38%"></i><i style="--h:44%"></i><i style="--h:52%"></i><i style="--h:61%"></i><i style="--h:72%"></i><i style="--h:84%"></i><i style="--h:100%"></i></div>
+      <p>Transaction volume rose in every quarter of 2025, and Maharashtra recorded the highest volume that year. Bars above are an illustration of the upward trend, not exact figures.</p>
+    </div>
+    <article class="card c6 rv">
+      <h3>Lounge Analysis and Demand Prediction</h3>
+      <p>Segmented historical flight data by haul, arrival region, time of day and aircraft capacity to estimate lounge eligibility, then forecast demand and capacity shortfalls under growth scenarios.</p>
+      <div class="links"><a href="https://github.com/fiza1805/lounge_analysis_demand_prediction" target="_blank" rel="noopener">GitHub</a></div>
+      <ul class="tags"><li>Python</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li></ul>
+    </article>
+    <article class="card c6 rv" style="--d:.1s">
+      <h3>Spatia: AI space understanding</h3>
+      <p>A video pipeline that extracts frames, detects furniture with YOLO, and powers room analysis and budget-aware interior suggestions through a FastAPI backend and Streamlit interface.</p>
+      <div class="links"><a href="https://github.com/fiza1805/Spatia" target="_blank" rel="noopener">GitHub</a></div>
+      <ul class="tags"><li>FastAPI</li><li>OpenCV</li><li>YOLO</li><li>Streamlit</li></ul>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="sh rv">Tools I work with</h2>
+  <div class="grid">
+    <div class="card skill c4 rv"><h3>Languages and databases</h3><ul class="tags"><li>Python</li><li>SQL (MySQL)</li></ul></div>
+    <div class="card skill c4 rv" style="--d:.08s"><h3>Data analysis</h3><ul class="tags"><li>Pandas</li><li>NumPy</li><li>Data cleaning</li><li>EDA</li><li>Segmentation</li></ul></div>
+    <div class="card skill c4 rv" style="--d:.16s"><h3>Visualization</h3><ul class="tags"><li>Matplotlib</li><li>Seaborn</li><li>Plotly</li><li>Streamlit</li></ul></div>
+    <div class="card skill c6 rv"><h3>Machine learning</h3><ul class="tags"><li>Scikit-learn</li><li>Classification</li><li>Predictive modeling</li><li>PyTorch</li><li>TensorFlow</li></ul></div>
+    <div class="card skill c6 rv" style="--d:.08s"><h3>Workflow</h3><ul class="tags"><li>Git and GitHub</li><li>Jupyter Notebook</li><li>VS Code</li><li>AI-assisted analysis</li><li>Prompt engineering</li></ul></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="sh rv">Background</h2>
+  <div class="grid">
+    <div class="card c7 rv"><h3>Education</h3>
+      <p><b style="color:var(--text)">B.Tech, Computer Science and Engineering (AI and Data Science)</b><br>Kallam Haranadhareddy Institute of Technology, Andhra Pradesh<br>Expected 2027 · CGPA 7.57/10 through Semester 3-2</p></div>
+    <div class="card c5 rv" style="--d:.1s"><h3>Certifications</h3>
+      <p>Python Programming, CodeWithHarry<br>Data Science, CodeWithHarry<br>British Airways job simulation, Forage<br>Tata job simulation, Forage</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="sh rv">Let’s talk data.</h2>
+  <a class="big rv" href="mailto:fiza70321@gmail.com">fiza70321@gmail.com</a>
+  <div class="cta rv" style="margin-top:30px"><a class="btn p" href="mailto:fiza70321@gmail.com?subject=Hello%20Sumaiya&body=Hi%20Sumaiya%2C%0A%0A">Mail me</a><a class="btn" href="https://www.linkedin.com/in/m-sumaiya-" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/fiza1805" target="_blank" rel="noopener">GitHub</a></div>
+</section>
+</main>
+<footer><div class="wrap">© 2026 M Sumaiya. Based in Andhra Pradesh, India.</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  // role typewriter
+  var words=["clear dashboards","SQL insights","business decisions","working models"],el=document.getElementById("typed"),w=0,c=0,del=false;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function tick(){
+    var t=words[w];
+    if(reduce){el.textContent=t;return}
+    el.textContent=t.slice(0,c);
+    if(!del&&c===t.length){del=true;return setTimeout(tick,1600)}
+    if(del&&c===0){del=false;w=(w+1)%words.length}
+    c+=del?-1:1;setTimeout(tick,del?35:70);
+  }
+  setTimeout(tick,1000);
+  // reveal on scroll + count-up
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.classList.add("in");io.unobserve(e.target);
+    var n=e.target.querySelector("[data-to]");
+    if(n){var to=+n.dataset.to,s=null;
+      if(reduce){n.textContent=to.toLocaleString();return}
+      (function f(ts){s=s||ts;var p=Math.min((ts-s)/1400,1);n.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString();if(p<1)requestAnimationFrame(f)})(performance.now());}
+  })},{threshold:.2});
+  document.querySelectorAll(".rv").forEach(function(n){io.observe(n)});
+  // mail links: the viewer sandbox blocks mailto in-frame, so open in a new tab, copy the address and confirm
+  var toast=document.getElementById("toast"),tt;
+  function say(m){toast.textContent=m;toast.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove("show")},4200)}
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener("click",function(e){
+    e.preventDefault();
+    var addr="fiza70321@gmail.com",ok=false;
+    try{navigator.clipboard.writeText(addr).then(function(){say("Email address copied: "+addr)},function(){say("Email me at "+addr)});ok=true}catch(x){}
+    if(!ok)say("Email me at "+addr);
+    try{window.open(a.getAttribute("href"),"_blank","noopener")}catch(x){}
+  })});
+  // cursor glow + card spotlight
+  var g=document.getElementById("glow");
+  addEventListener("pointermove",function(e){g.style.opacity=1;g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"});
+  document.querySelectorAll(".card").forEach(function(c){c.addEventListener("pointermove",function(e){
+    var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")})});
+})();
+</script>
+</body>
+</html>
